@@ -9,7 +9,7 @@ import java.util.TreeSet;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class Matrix {
+public class ArrayListSort {
   // Java question: Dada uma matrix com tamanho fixo de 100 inteiros, implementar 2 abordagens
   // para classificar e avaliar a melhor abordagem
   public static void main(String[] args) {
@@ -22,7 +22,7 @@ public class Matrix {
   public static void teste1() {
     List<Integer> teste	=	new	ArrayList();
     long	inicio	=	System.currentTimeMillis();
-    int	total	=	100;
+    int	total	=	10000;
     for	(int	i	=	0;	i	<	total;	i++)	{
       teste.add(i);
     }
@@ -32,6 +32,7 @@ public class Matrix {
     Collections.sort(teste);
     long	fim	=	System.currentTimeMillis();
     double	tempo	=	(fim	-	inicio)	/	1000.0;
+    System.out.println("Time ArrayList out:	" + teste);
     //log.info(String.format("Time ArrayList:	" + tempo));
     System.out.println("Time ArrayList:	" + tempo);
 
@@ -40,15 +41,16 @@ public class Matrix {
   public static void teste2() {
     Collection<Integer> teste	=	new HashSet();
     long	inicio	=	System.currentTimeMillis();
-    int	total	=	100;
+    int	total	=	10000;
     for	(int	i	=	0;	i	<	total;	i++)	{
       teste.add(i);
     }
     for	(int	i	=	0;	i	<	total;	i++)	{
       teste.contains(i);
     }
-    List<Integer> testeList = new ArrayList<Integer>(teste);
-    TreeSet<Integer> tset = new TreeSet<Integer>(testeList);
+    TreeSet myTreeSet = new TreeSet();
+    myTreeSet.addAll(teste);
+    System.out.println("Time ArrayList out:	" + teste);
     long	fim	=	System.currentTimeMillis();
     double	tempo	=	(fim	-	inicio)	/	1000.0;
     //log.info(String.format("Time HashSet:	" + tempo));
